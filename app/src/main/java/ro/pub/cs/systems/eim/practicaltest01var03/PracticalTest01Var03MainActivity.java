@@ -2,6 +2,7 @@ package ro.pub.cs.systems.eim.practicaltest01var03;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +13,7 @@ public class PracticalTest01Var03MainActivity extends AppCompatActivity {
 
     private EditText primulNr;
     private EditText doileaNr;
-    private Button butonplus, butonminus;
+    private Button butonplus, butonminus,navigateToSecondaryActivityButton;
     private EditText rezultat;
     private ButtonClickListener buttonClickListener = new ButtonClickListener();
 
@@ -38,6 +39,12 @@ public class PracticalTest01Var03MainActivity extends AppCompatActivity {
                     int diferenta = primnr - doileanr;
                     rezultat.setText(String.valueOf(diferenta));
                     break;
+                case R.id.navigate_to_secondary_activity_button:
+                    Intent intent = new Intent(getApplicationContext(), PracticalTest01Var03SecondaryActivity.class);
+                    intent.putExtra("rezultat", rezultat.toString());
+                    startActivityForResult(intent, 1);
+                    break;
+
             }
         }
     }
@@ -55,6 +62,7 @@ public class PracticalTest01Var03MainActivity extends AppCompatActivity {
         butonminus = (Button)findViewById(R.id.ButtonMinus);
         butonminus.setOnClickListener(buttonClickListener);
         butonplus.setOnClickListener(buttonClickListener);
+
 
         primulNr.setText(String.valueOf(0));
         doileaNr.setText(String.valueOf(0));
@@ -78,6 +86,8 @@ public class PracticalTest01Var03MainActivity extends AppCompatActivity {
             primulNr.setText(String.valueOf(0));
             doileaNr.setText(String.valueOf(0));
         }
+        navigateToSecondaryActivityButton = (Button)findViewById(R.id.navigate_to_secondary_activity_button);
+        navigateToSecondaryActivityButton.setOnClickListener(buttonClickListener);
     }
 
 
@@ -114,6 +124,14 @@ public class PracticalTest01Var03MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), doileaNr.getText().toString(), Toast.LENGTH_SHORT).show();
         } else {
             doileaNr.setText(String.valueOf(0));
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (requestCode == 1) {
+            Toast.makeText(this, "The activity returned with result " + resultCode, Toast.LENGTH_LONG).show();
         }
     }
 
