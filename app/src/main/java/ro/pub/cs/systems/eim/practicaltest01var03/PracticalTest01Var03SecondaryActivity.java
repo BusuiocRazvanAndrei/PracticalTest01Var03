@@ -13,6 +13,7 @@ public class PracticalTest01Var03SecondaryActivity extends AppCompatActivity {
 
 
     private Button buttoncorect, buttonincorect;
+    private EditText mesaj;
 
     private ButtonClickListener buttonClickListener = new ButtonClickListener();
     private class ButtonClickListener implements View.OnClickListener {
@@ -47,5 +48,8 @@ public class PracticalTest01Var03SecondaryActivity extends AppCompatActivity {
         buttoncorect.setOnClickListener(buttonClickListener);
         buttonincorect = (Button)findViewById(R.id.ButtonFals);
         buttonincorect.setOnClickListener(buttonClickListener);
+        mesaj = (EditText)findViewById(R.id.mesaj);
+        String id = getIntent().getStringExtra("rezultat");
+        mesaj.setText(id);
     }
 }

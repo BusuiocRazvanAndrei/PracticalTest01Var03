@@ -33,11 +33,11 @@ public class PracticalTest01Var03MainActivity extends AppCompatActivity {
             switch(view.getId()) {
                 case R.id.ButtonPlus:
                     int suma = primnr + doileanr;
-                    rezultat.setText(String.valueOf(suma));
+                    rezultat.setText(String.valueOf(primnr + " + " + doileanr + " = " + suma));
                     break;
                 case R.id.ButtonMinus:
                     int diferenta = primnr - doileanr;
-                    rezultat.setText(String.valueOf(diferenta));
+                    rezultat.setText(String.valueOf(primnr + " + " + doileanr + " = " + diferenta));
                     break;
                 case R.id.navigate_to_secondary_activity_button:
                     Intent intent = new Intent(getApplicationContext(), PracticalTest01Var03SecondaryActivity.class);

@@ -12,7 +12,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:saveEnabled="false"
- />
+        android:text="da" />
 
     <LinearLayout
         android:layout_width="wrap_content"
